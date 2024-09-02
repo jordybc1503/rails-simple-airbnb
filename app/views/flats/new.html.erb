@@ -1,0 +1,29 @@
+<div class="container w-50">
+  <h1>Create New Flat</h1>
+
+  <%= simple_form_for @flat do |f| %>
+    <div class="form-group">
+      <%= f.input :name %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :address %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :description %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :price_per_night %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :number_of_guests %>
+    </div>
+
+    <div class="form-group">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

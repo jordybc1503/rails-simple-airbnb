@@ -1,0 +1,9 @@
+<div class="container">
+  <h1><%= @flat.name %></h1>
+  <p>Address: <%= @flat.address %></p>
+  <p>Description: <%= @flat.description %></p>
+  <p>Price per Night: <%= number_to_currency(@flat.price_per_night) %></p>
+  <p>Number of Guests: <%= @flat.number_of_guests %></p>
+
+  <%= link_to 'Back to List', flats_path, class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,17 @@
+<div class="container w-80 border mt-2">
+  <h1>Flats Index</h1>
+
+  <% if @flats.empty? %>
+    <p>No results were found</p>
+  <% else %>
+    <ul>
+      <% @flats.each do |flat| %>
+        <li>
+          <%= link_to flat.name, flat_path(flat), class: "border" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to "New Flat", new_flat_path, class: "btn btn-primary" %>
+</div>
