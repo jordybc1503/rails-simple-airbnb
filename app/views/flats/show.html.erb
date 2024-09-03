@@ -4,6 +4,8 @@
   <p>Description: <%= @flat.description %></p>
   <p>Price per Night: <%= number_to_currency(@flat.price_per_night) %></p>
   <p>Number of Guests: <%= @flat.number_of_guests %></p>
+  <p>Number of Guests: <%= @flat.picture_url %></p>
+  <img src=<%= @flat.picture_url %> alt="">
 
   <%= link_to 'Back to List', flats_path, class: "btn btn-primary" %>
 </div>
