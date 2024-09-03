@@ -7,14 +7,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get "/flats", to: "flats#index", as: :flats
-  get "/flats/new", to: "flats#new", as: :new_flat
-  post "/flats", to: "flats#create"
-  get "/flats/:id", to: "flats#show", as: :flat
-
-  # Additional routes for edit and update actions if needed
+  resources :flats
+  # get "/flats", to: "flats#index", as: :flats
+  # get "/flats/new", to: "flats#new", as: :new_flat
+  # post "/flats", to: "flats#create"
+  # get "/flats/:id", to: "flats#show", as: :flat
   # get "/flats/:id/edit", to: "flats#edit", as: :edit_flat
   # patch "/flats/:id", to: "flats#update"
+  # delete "/flats/:id", to: "flats#destroy"
+  # Additional routes for edit and update actions if needed
+
+
   # put "/flats/:id", to: "flats#update"
   # delete "/flats/:id", to: "flats#destroy"
 

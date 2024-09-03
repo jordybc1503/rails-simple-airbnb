@@ -1,7 +1,11 @@
 class FlatsController < ApplicationController
   def index
-    @flats = Flat.all
-  end
+    @flats = if params[:query].presence
+                Flat.where('name LIKE ? OR address LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+            else
+              Flat.all
+            end
+    end
 
   def new
     @flat = Flat.new
@@ -18,6 +22,25 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+  end
+
+  def edit
+    @flat = Flat.find(params[:id])
+  end
+
+  def update
+    @flat = Flat.find(params[:id])
+    if @flat.update(flats_params)
+      redirect_to flats_path, notice: 'Flat was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to flats_path, notice: 'Flat was successfully deleted.'
   end
 
   private

@@ -1,17 +1,45 @@
-<div class="container w-80 border mt-2">
-  <h1>Flats Index</h1>
+<nav class="row justify-content-between m-1 bg-light-subtle">
+  <h1 class="col-4">Simple Airbnb</h1>
+  <div class="col-3">
+    <%= form_with url: flats_path, method: :get, local: true, class: "mb-3" do %>
+    <div class="input-group">
+      <%= text_field_tag :query, params[:query], placeholder: "Search flats", class: "form-control" %>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  <% end %>
+
+  </div>
+
+
+  <%= link_to "Add Flat", new_flat_path, class: "btn btn-outline-primary col-1 m-1" %>
+</nav>
+
+<div class="container">
+  <h1>All our flats (<%= @flats.length %>)</h1>
 
   <% if @flats.empty? %>
     <p>No results were found</p>
   <% else %>
-    <ul>
+    <div class="d-flex flex-wrap justify-content-between">
       <% @flats.each do |flat| %>
-        <li>
-          <%= link_to flat.name, flat_path(flat), class: "border" %>
-        </li>
+        <div class="card p-2 m-2" style="width: 300px;">
+
+          <h5 class="card-title"><%= flat.name %></h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary"><%= flat.address %></h6>
+          <div class="card-body">
+            <div class="col-2"><%= flat.number_of_guests %></div>
+            <div class="col-2"><%= flat.price_per_night %></div>
+          </div>
+          <div class="card-body" >
+            <%= link_to "More Info" , flat_path(flat), class: "card-link" %>
+            <%= link_to "Edit" , edit_flat_path(flat), class: "card-link" %>
+            <%= link_to "Remove", flat, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "card-link"  %>
+          </div>
+
+
+        </div>
       <% end %>
-    </ul>
+    </div>
   <% end %>
 
-  <%= link_to "New Flat", new_flat_path, class: "btn btn-primary" %>
 </div>
