@@ -1,4 +1,5 @@
 class FlatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @flats = if params[:query].presence
                 Flat.where('name LIKE ? OR address LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")

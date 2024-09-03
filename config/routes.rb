@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: "flats#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,17 +10,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :flats
-  # get "/flats", to: "flats#index", as: :flats
-  # get "/flats/new", to: "flats#new", as: :new_flat
-  # post "/flats", to: "flats#create"
-  # get "/flats/:id", to: "flats#show", as: :flat
-  # get "/flats/:id/edit", to: "flats#edit", as: :edit_flat
-  # patch "/flats/:id", to: "flats#update"
-  # delete "/flats/:id", to: "flats#destroy"
-  # Additional routes for edit and update actions if needed
-
-
-  # put "/flats/:id", to: "flats#update"
-  # delete "/flats/:id", to: "flats#destroy"
 
 end
