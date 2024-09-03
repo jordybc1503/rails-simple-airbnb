@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :flats
+  resources :flats do
+    collection do
+      get 'my_flats', as: :my
+    end
+  end
 
 end
